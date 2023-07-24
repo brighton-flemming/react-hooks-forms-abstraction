@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 
-function Form({ formData, setFormData }) {
-  const [firstName, setFirstName] = useState("John");
-  const [lastName, setLastName] = useState("Henry");
+function Form() {
+  const [formData, setFormData] = useState({
+    firstName: "John",
+    lastName: "Henry",
+    admin: false,
+  });
 
   function handleChange(event) {
     const name = event.target.name;
     let value = event.target.value;
 
     if (event.target.type === "checkbox") {
-      newValue = event.target.checked;
+      value = event.target.checked;
     }
 
     setFormData({
@@ -18,10 +21,12 @@ function Form({ formData, setFormData }) {
     });
   }
 
- 
+  function handleSubmit(event) {
+    event.preventDefault();
+  }
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <input
         type="text"
         name="firstName"
