@@ -6,10 +6,10 @@ function Form({ formData, setFormData }) {
 
   function handleChange(event) {
     const name = event.target.name;
-    const value = event.target.value;
+    let value = event.target.value;
 
     if (event.target.type === "checkbox") {
-      value = event.target.checked;
+      newValue = event.target.checked;
     }
 
     setFormData({
@@ -18,32 +18,20 @@ function Form({ formData, setFormData }) {
     });
   }
 
-  function handleFirstNameChange(event) {
-    setFormData({
-      ...formData,
-      firstName: event.target.value,
-    });
-  }
-
-  function handleLastNameChange(event) {
-    setFormData({
-      ...formData,
-      lastName: event.target.value,
-    });
-  }
+ 
 
   return (
     <form>
       <input
         type="text"
         name="firstName"
-        onChange={handleFirstNameChange}
+        onChange={handleChange}
         value={formData.firstName}
       />
       <input
         type="text"
         name="lastName"
-        onChange={handleLastNameChange}
+        onChange={handleChange}
         value={formData.lastName}
       />
       <input
